@@ -33,6 +33,7 @@ class AddItem extends React.Component {
         this.setState({
             description: '',
             image_url: '',
+            user_id: '',
         });
     }
 
