@@ -5,12 +5,12 @@
 
 -- Display All Items --
 
-    [] GET route from DB
+    [X] GET route from DB
         InfoPage.js
             [X] import connect
         Index.js
-            [] Item Saga
-            [] Item Reducer
+            [X] Item Saga
+            [X] Item Reducer
     
 
     COMPONENT "ItemTable.js" (import to InfoPage)

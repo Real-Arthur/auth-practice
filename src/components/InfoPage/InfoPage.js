@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import ItemTable from '../ItemTable/ItemTable';
 
 
 
@@ -18,14 +19,16 @@ class InfoPage extends React.Component {
     return (
       <div>
         <p>Info Page</p>
-        {this.props.store.items.map((item, i) =>
-
-          <img key={i} src={item.image_url} />
-        )}
+        <ItemTable />
 
       </div>
     )
   }
 }
+
+{/* {this.props.store.items.map((item, i) =>
+
+          <img key={i} src={item.image_url} />
+        )} */}
 
 export default connect(mapStoreToProps)(InfoPage);
