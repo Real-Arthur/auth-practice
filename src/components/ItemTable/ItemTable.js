@@ -4,6 +4,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ItemTable extends React.Component {
 
+
     componentDidMount = () => {
         this.props.dispatch({
             type: 'FETCH_ITEMS'
@@ -11,9 +12,13 @@ class ItemTable extends React.Component {
         })
     }
 
-    deleteItem = (userId) => {
-        console.log('in deleteItem with user_id:', userId);
+    deleteItem = (id) => {
+        console.log('in deleteItem with item id:', id);
 
+        this.props.dispatch({
+            type: 'DELETE_ITEM',
+            payload: id
+        })
     }
 
     render() {
@@ -29,15 +34,33 @@ class ItemTable extends React.Component {
                     </thead>
                     <tbody>
 
-                        {this.props.store.items.map((item, i) =>
-                            <tr>
-                                <td>{item.description}</td>
-                                <td>
-                                    <img key={i} src={item.image_url} />
-                                </td>
-                                <td><button onClick={() => this.deleteItem(item.user_id)}>Delete</button></td>
-                            </tr>
-                        )}
+                        {this.props.store.items.map((item, i) => {
+
+                            if (this.props.store.user.id === item.user_id) {
+                                return (
+                                    <tr>
+                                        <td>{item.description}</td>
+                                        <td>
+                                            <img key={i} src={item.image_url} />
+                                        </td>
+                                        <td><button onClick={() => this.deleteItem(item.id)}>Delete</button></td>
+
+                                    </tr>
+                                )
+                            }
+                            else {
+                                return (
+                                    <tr>
+                                        <td>{item.description}</td>
+                                        <td>
+                                            <img key={i} src={item.image_url} />
+                                        </td>
+
+                                    </tr>
+                                )
+                            }
+
+                        })}
 
 
 

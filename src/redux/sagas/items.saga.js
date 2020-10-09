@@ -17,8 +17,29 @@ function* fetchItems(action) {
     })
 }
 
+function* deleteItem(action) {
+    console.log('in fetchItems saga with', action);
+
+    let response = yield axios({
+        method: 'DELETE',
+        url: `/api/shelf/${action.payload}`,
+        data: {
+            id: action.payload
+        }
+    });
+
+    console.log('back from DELETE with:', response.data);
+
+    yield put({
+        type: 'FETCH_ITEMS',
+
+    })
+}
+
+
 function* itemsSaga() {
     yield takeLatest('FETCH_ITEMS', fetchItems);
+    yield takeLatest('DELETE_ITEM', deleteItem);
 }
 
 export default itemsSaga;

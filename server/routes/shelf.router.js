@@ -28,6 +28,15 @@ router.post('/', (req, res) => {
  */
 router.delete('/:id', (req, res) => {
   // DELETE route code here
+  const queryText = `DELETE FROM "item" WHERE id=$1;`;
+
+  pool.query(queryText, [req.body.id])
+    .then((result) => { res.send(result.rows); })
+    .catch((err) => {
+      console.error('Error completing DELETE ITEM query', err);
+      res.sendStatus(500);
+    });
+
 });
 
 /**
