@@ -7,7 +7,7 @@
 
     [] GET route from DB
         InfoPage.js
-            [] import connect
+            [X] import connect
         Index.js
             [] Item Saga
             [] Item Reducer
