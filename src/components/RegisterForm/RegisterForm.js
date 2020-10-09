@@ -10,6 +10,7 @@ class RegisterForm extends Component {
 
   registerUser = (event) => {
     event.preventDefault();
+    (console.log('Event is:', event))
 
     this.props.dispatch({
       type: 'REGISTER',
@@ -27,6 +28,7 @@ class RegisterForm extends Component {
   };
 
   render() {
+
     return (
       <form className="formPanel" onSubmit={this.registerUser}>
         <h2>Register User</h2>
