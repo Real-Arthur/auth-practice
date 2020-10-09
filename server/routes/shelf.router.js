@@ -21,6 +21,16 @@ router.get('/', (req, res) => {
  */
 router.post('/', (req, res) => {
   // code here
+  const queryText = `
+  INSERT INTO "item" ("description", "image_url", "user_id")
+    VALUES ($1, $2, $3);`;
+
+  pool.query(queryText, [req.body.description, req.body.image_url, req.body.user_id])
+    .then((result) => { res.send(result.rows); })
+    .catch((err) => {
+      console.error('Error completing POST ITEM query', err);
+      res.sendStatus(500);
+    });
 });
 
 /**
@@ -36,7 +46,6 @@ router.delete('/:id', (req, res) => {
       console.error('Error completing DELETE ITEM query', err);
       res.sendStatus(500);
     });
-
 });
 
 /**
