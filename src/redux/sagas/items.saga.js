@@ -36,10 +36,27 @@ function* deleteItem(action) {
     })
 }
 
+function* addItem(action) {
+    console.log('in fetchItems saga with', action);
+
+    let response = yield axios({
+        method: 'POST',
+        url: `/api/shelf`,
+        data: action.payload
+    });
+
+    console.log('back from ADD ITEM with:', response.data);
+
+    yield put({
+        type: 'FETCH_ITEMS'
+
+    })
+}
 
 function* itemsSaga() {
     yield takeLatest('FETCH_ITEMS', fetchItems);
     yield takeLatest('DELETE_ITEM', deleteItem);
+    yield takeLatest('ADD_ITEM', addItem);
 }
 
 export default itemsSaga;

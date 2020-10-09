@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import ItemTable from '../ItemTable/ItemTable';
+import AddItem from '../AddItem/AddItem';
 
 
 
@@ -20,6 +21,7 @@ class InfoPage extends React.Component {
       <div>
         <p>Info Page</p>
         <ItemTable />
+        <AddItem />
 
       </div>
     )
