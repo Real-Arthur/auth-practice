@@ -1,6 +1,6 @@
 -- To Do --
 
-[] Fix Register
+[X] Fix Register
 
 
 -- Display All Items --
